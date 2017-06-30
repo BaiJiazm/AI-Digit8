@@ -1,0 +1,31 @@
+# Project: digit8
+# Makefile created by Dev-C++ 5.10
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = core.o display.o
+LINKOBJ  = core.o display.o
+LIBS     = -L"G:/DevCpp/Dev-Cpp/MinGW64/lib" -L"G:/DevCpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"G:/DevCpp/Dev-Cpp/MinGW64/include" -I"G:/DevCpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"G:/DevCpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"G:/DevCpp/Dev-Cpp/MinGW64/include" -I"G:/DevCpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"G:/DevCpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"G:/DevCpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = digit8.exe
+CXXFLAGS = $(CXXINCS) -std=c++11
+CFLAGS   = $(INCS) -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+core.o: core.cpp
+	$(CPP) -c core.cpp -o core.o $(CXXFLAGS)
+
+display.o: display.cpp
+	$(CPP) -c display.cpp -o display.o $(CXXFLAGS)
